@@ -54,5 +54,11 @@ export class LinkedList {
     this.length += 1;
   }
 
+  pop() {
+    if(this.length === 0) return;
 
+    const headValue = this.head();
+    this.firstNode = this.firstNode.nextNode;
+    return headValue;
+  }
 }

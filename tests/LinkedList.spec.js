@@ -1,4 +1,4 @@
-import { beforeEach, describe, equal, test } from "@jest/globals";
+import { beforeEach, describe, equal, expect, test } from "@jest/globals";
 import { LinkedList } from "../src/LinkedList.js";
 
 describe("LinkedList", () => {
@@ -47,9 +47,9 @@ describe("LinkedList", () => {
     });
 
     test("return undefined on a negative index", () => {
-        list.append("alpha");
-        list.append("gamma");
-        expect(list.at(-1)).toEqual(undefined);
+      list.append("alpha");
+      list.append("gamma");
+      expect(list.at(-1)).toEqual(undefined);
     });
   });
 
@@ -83,7 +83,7 @@ describe("LinkedList", () => {
     });
   });
 
-    describe("size(value)", () => {
+  describe("size()", () => {
     test("returns the length of a list", () => {
       list.append("alpha");
       expect(list.size()).toEqual(1);
@@ -99,6 +99,20 @@ describe("LinkedList", () => {
       list.append("gamma");
       list.append("gamma");
       expect(list.size()).toEqual(8);
+    });
+  });
+
+  describe("pop()", () => {
+    test("returns undefined it it's used on an empty list", () => {
+      expect(list.pop()).toEqual(undefined);
+    });
+
+    test("removes the head node and returns its value", () => {
+        list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      expect(list.pop()).toEqual("alpha");
+      expect(list.head()).toEqual("beta");
     });
   });
 });
