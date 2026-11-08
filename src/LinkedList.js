@@ -77,4 +77,20 @@ export class LinkedList {
     }
     return false;
   }
+
+    findIndex(value) {
+    if(this.length === 0) return -1;
+
+    let i = 0;
+    let currentNode = this.firstNode;
+
+    while(i < this.length) {
+
+    if(currentNode.value === value) return i;
+
+    currentNode = currentNode.nextNode;
+    i += 1;
+    }
+    return -1;
+  }
 }

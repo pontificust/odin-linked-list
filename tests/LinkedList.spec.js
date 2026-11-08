@@ -108,7 +108,7 @@ describe("LinkedList", () => {
     });
 
     test("removes the head node and returns its value", () => {
-        list.append("alpha");
+      list.append("alpha");
       list.append("beta");
       list.append("gamma");
       expect(list.pop()).toEqual("alpha");
@@ -116,19 +116,35 @@ describe("LinkedList", () => {
     });
   });
 
-    describe("contains(value)", () => {
+  describe("contains(value)", () => {
     test("returns true if the list contains the value", () => {
-        list.append("alpha");
-        list.append("beta");
-        list.append("gamma");
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
       expect(list.contains("alpha")).toEqual(true);
     });
 
     test("returns false if the list doesn't contain the value", () => {
-        list.append("alpha");
-        list.append("beta");
-        list.append("gamma");
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
       expect(list.contains("theta")).toEqual(false);
+    });
+  });
+
+  describe("findIndex(value)", () => {
+    test("returns the index of the node containing the value", () => {
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      expect(list.findIndex("gamma")).toEqual(2);
+    });
+
+    test("returns -1 if the list doen't contain the value", () => {
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      expect(list.findIndex("theta")).toEqual(-1);
     });
   });
 });
