@@ -1,40 +1,52 @@
 import { Node } from "./Node.js";
 
 export class LinkedList {
-    length = 0;
+  length = 0;
 
-    head() {
-        return this.firstNode?.value;
-    }
+  _insertFirstNode(node) {
+    this.firstNode = node;
+    this.lastNode = node;
+    this.length += 1;
+  }
 
-    tail() {
-        return this.lastNode?.value;
-    }
+  head() {
+    return this.firstNode?.value;
+  }
 
-    at(index) {
-        let i = 0;
-        let currentNode = this.firstNode;
-        while(i !== index) {
-            i += 1;
-            currentNode = currentNode?.nextNode;
-        }
-        return currentNode?.value;
-    }
+  tail() {
+    return this.lastNode?.value;
+  }
 
-    append(value) {
-        const node = new Node(value);
-        if(this.length === 0) {
-            this.firstNode = node;
-            this.lastNode = node;
-            this.length += 1;
-            return;
-        }
-        this.lastNode.nextNode = node;
-        this.lastNode = node;
-        this.length += 1;
+  at(index) {
+    if(index < 0) return undefined;
+    let i = 0;
+    let currentNode = this.firstNode;
+    while (i < index) {
+      i += 1;
+      currentNode = currentNode?.nextNode;
     }
+    return currentNode?.value;
+  }
 
-    prepend(value){
-        this.nodes
+  append(value) {
+    const node = new Node(value);
+    if (this.length === 0) {
+      this._insertFirstNode(node);
+      return;
     }
-};
+    this.lastNode.nextNode = node;
+    this.lastNode = node;
+    this.length += 1;
+  }
+
+  prepend(value) {
+    const node = new Node(value);
+    if (this.length === 0) {
+      this._insertFirstNode(node);
+      return;
+    }
+    node.nextNode = this.firstNode;
+    this.firstNode = node;
+    this.length += 1;
+  }
+}
