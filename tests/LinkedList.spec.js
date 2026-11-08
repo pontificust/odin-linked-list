@@ -52,11 +52,21 @@ describe('append(value)', () => {
     test('add a node to the empty list, it becomes a head', () => {
         list.append('alpha');
         expect(list.head()).toEqual('alpha');
+        expect(list.firstNode.nextNode).toBeNull();
     });
 
         test('add a node to the not empty list, it becomes a tail', () => {
         list.append('beta');
-        expect(list.tail()).toEqual('beta');
+        list.append('gamma');
+        expect(list.tail()).toEqual('gamma');
+        expect(list.firstNode.nextNode.value).toEqual('gamma');
+    });
+});
+
+describe('prepend(value)', () => {
+    test('add a node to a list, it becomes a head', () => {
+        list.append('alpha');
+        expect(list.head()).toEqual('alpha');
     });
 });
 
