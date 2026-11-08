@@ -61,4 +61,20 @@ export class LinkedList {
     this.firstNode = this.firstNode.nextNode;
     return headValue;
   }
+
+  contains(value) {
+    if(this.length === 0) return false;
+
+    let i = 0;
+    let currentNode = this.firstNode;
+
+    while(i < this.length) {
+
+    if(currentNode.value === value) return true;
+
+    currentNode = currentNode.nextNode;
+    i += 1;
+    }
+    return false;
+  }
 }

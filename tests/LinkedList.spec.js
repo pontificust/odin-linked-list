@@ -115,4 +115,20 @@ describe("LinkedList", () => {
       expect(list.head()).toEqual("beta");
     });
   });
+
+    describe("contains(value)", () => {
+    test("returns true if the list contains the value", () => {
+        list.append("alpha");
+        list.append("beta");
+        list.append("gamma");
+      expect(list.contains("alpha")).toEqual(true);
+    });
+
+    test("returns false if the list doesn't contain the value", () => {
+        list.append("alpha");
+        list.append("beta");
+        list.append("gamma");
+      expect(list.contains("theta")).toEqual(false);
+    });
+  });
 });
