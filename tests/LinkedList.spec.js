@@ -147,4 +147,17 @@ describe("LinkedList", () => {
       expect(list.findIndex("theta")).toEqual(-1);
     });
   });
+
+    describe("toString()", () => {
+    test("if the list is empty returns '' ", () => {
+      expect(list.toString()).toEqual("");
+    });
+
+    test("returns string representation of the unempty list", () => {
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      expect(list.toString()).toEqual("{ alpha } -> { beta } -> { gamma } -> null");
+    });
+  });
 });

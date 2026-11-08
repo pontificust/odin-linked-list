@@ -93,4 +93,23 @@ export class LinkedList {
     }
     return -1;
   }
+
+  toString() {
+    if(this.length === 0) return "";
+
+    let i = 0;
+    let currentNode = this.firstNode;
+    let resultStr = "";
+
+    while(i < this.length) {
+        if(i === this.length - 1) {
+            resultStr += `{ ${currentNode.value} } -> null`
+        } else {
+            resultStr += `{ ${currentNode.value} } -> `
+            currentNode = currentNode.nextNode;
+        }
+    i += 1;
+    }
+    return resultStr;
+  }
 }
