@@ -82,4 +82,23 @@ describe("LinkedList", () => {
       expect(list.firstNode.nextNode.value).toEqual("beta");
     });
   });
+
+    describe("size(value)", () => {
+    test("returns the length of a list", () => {
+      list.append("alpha");
+      expect(list.size()).toEqual(1);
+    });
+
+    test("returns the length of a list", () => {
+      list.append("beta");
+      list.append("gamma");
+      list.append("gamma");
+      list.append("gamma");
+      list.append("gamma");
+      list.append("gamma");
+      list.append("gamma");
+      list.append("gamma");
+      expect(list.size()).toEqual(8);
+    });
+  });
 });

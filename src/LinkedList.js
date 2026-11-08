@@ -8,6 +8,10 @@ export class LinkedList {
     this.lastNode = node;
     this.length += 1;
   }
+  
+  size() {
+    return this.length;
+  }
 
   head() {
     return this.firstNode?.value;
@@ -49,4 +53,6 @@ export class LinkedList {
     this.firstNode = node;
     this.length += 1;
   }
+
+
 }
