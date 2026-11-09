@@ -148,7 +148,7 @@ describe("LinkedList", () => {
     });
   });
 
-    describe("toString()", () => {
+  describe("toString()", () => {
     test("if the list is empty returns '' ", () => {
       expect(list.toString()).toEqual("");
     });
@@ -157,7 +157,45 @@ describe("LinkedList", () => {
       list.append("alpha");
       list.append("beta");
       list.append("gamma");
-      expect(list.toString()).toEqual("{ alpha } -> { beta } -> { gamma } -> null");
+      expect(list.toString()).toEqual(
+        "{ alpha } -> { beta } -> { gamma } -> null",
+      );
+    });
+  });
+
+  describe("insertAt(index, ...values)", () => {
+    test("if the index is out of bounds throw a RangeError", () => {
+      expect(() => list.insertAt(10, 'alpha', 'beta', 'gamma')).toThrow(RangeError);
+    });
+
+    test("if the index is 0", () => {
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      list.insertAt(0, 'theta', 'lambda', 'sigma')
+            expect(list.toString()).toEqual(
+        "{ theta } -> { lambda } -> { sigma } -> { alpha } -> { beta } -> { gamma } -> null",
+      );
+    });
+
+        test("if the index equals the length of the list", () => {
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      list.insertAt(3, 'theta', 'lambda', 'sigma')
+            expect(list.toString()).toEqual(
+        "{ alpha } -> { beta } -> { gamma } -> { theta } -> { lambda } -> { sigma } -> null",
+      );
+    });
+
+    test("insert new nodes with the given values at the given index", () => {
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      list.insertAt(1, 'theta', 'lambda', 'sigma')
+      expect(list.toString()).toEqual(
+        "{ alpha } -> { theta } -> { lambda } -> { sigma } -> { beta } -> { gamma } -> null",
+      );
     });
   });
 });
