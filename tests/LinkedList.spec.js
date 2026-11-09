@@ -198,4 +198,56 @@ describe("LinkedList", () => {
       );
     });
   });
+
+  describe("removeAt(index)", () => {
+    test("if the index is out of bounds throw a RangeError", () => {
+      expect(() => list.removeAt(10)).toThrow(RangeError);
+    });
+
+    test("if the index is 0", () => {
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      list.removeAt(0)
+            expect(list.toString()).toEqual(
+        "{ beta } -> { gamma } -> null",
+      );
+    });
+
+        test("if the index equals the index of the last node", () => {
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      list.removeAt(2)
+            expect(list.toString()).toEqual(
+        "{ alpha } -> { beta } -> null",
+      );
+    });
+
+    test("remove the node at the given index", () => {
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      list.removeAt(1)
+      expect(list.toString()).toEqual(
+        "{ alpha } -> { gamma } -> null",
+      );
+    });
+
+    test("removing a tail", () => {
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      list.removeAt(2);
+      expect(list.tail()).toEqual('beta');
+    });
+
+    test("removing a head", () => {
+      list.append("alpha");
+      list.append("beta");
+      list.append("gamma");
+      list.removeAt(0);
+      expect(list.head()).toEqual('beta');
+    });
+  });
 });

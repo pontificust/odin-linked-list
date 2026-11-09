@@ -30,6 +30,19 @@ export class LinkedList {
     }
   }
 
+  _findNode(index) {
+    let i = 0;
+    let currentNode = this.firstNode;
+    let previousNode;
+
+    while (i < index) {
+      i += 1;
+      previousNode = currentNode;
+      currentNode = currentNode?.nextNode;
+    }
+    return {previousNode, currentNode};
+  }
+
   size() {
     return this.length;
   }
@@ -44,13 +57,7 @@ export class LinkedList {
 
   at(index) {
     if (index < 0) return undefined;
-    let i = 0;
-    let currentNode = this.firstNode;
-    while (i < index) {
-      i += 1;
-      currentNode = currentNode?.nextNode;
-    }
-    return currentNode?.value;
+    return this._findNode(index).currentNode?.value;
   }
 
   append(value) {
@@ -151,6 +158,26 @@ export class LinkedList {
         currentNode = currentNode.nextNode;
         i += 1;
       }
+    }
+  }
+
+  removeAt(index) {
+    if(index >= this.length || index < 0) {
+      throw new RangeError('The index is out of bounds');
+    }
+    
+    if(index === 0) {
+      this.firstNode = this.firstNode.nextNode;
+    } else {
+      const {previousNode, currentNode} = this._findNode(index);
+      previousNode.nextNode = currentNode.nextNode;
+      if(index === this.length - 1) {
+        this.lastNode = previousNode;
+      }
+    }
+    this.length -= 1;
+    if(this.length === 0) {
+      this.lastNode = null;
     }
   }
 }
